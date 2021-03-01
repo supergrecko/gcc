@@ -37,6 +37,8 @@ This is an example showing how to build and generate assembler code using
 libgccjit. The sample project can be found in 
 [/samples/code-generation/](samples/code-generation)
 
+> Sample showing how to call JIT-generated functions is work-in-progress.
+
 We can use Gradle to install the required dependencies and native binaries 
 built by JavaCPP.
 
@@ -149,6 +151,9 @@ greet:
 	.ident	"GCC: (GNU) 10.2.0"
 	.section	.note.GNU-stack,"",@progbits
 ```
+
+The `$$139992918400400` operand to the movabsq instruction is expected as 
+it refers to our `"hello %s\n"` string we generated.
 
 [javacpp-presets]: https://github.com/bytedeco/javacpp-presets#readme
 [libgccjit]: https://gcc.gnu.org/wiki/JIT
