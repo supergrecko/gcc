@@ -1,11 +1,5 @@
 name: gcc
-on:
-  push:
-    branches:
-      - master
-  pull_request:
-    branches:
-      - master
+on: [push, pull_request, workflow_dispatch]
 env:
   CI_DEPLOY_NEED_GCC: 1
   CI_DEPLOY_NEED_GRADLE: 1
@@ -18,6 +12,11 @@ jobs:
     steps:
       - uses: supergrecko/gcc/.github/actions/deploy-focal@master
   linux-x86_64:
+    runs-on: ubuntu-16.04
+    container: centos:6
+    steps:
+      - uses: bytedeco/javacpp-presets/.github/actions/deploy-centos@master
+  linux-x86:
     runs-on: ubuntu-16.04
     container: centos:6
     steps:
